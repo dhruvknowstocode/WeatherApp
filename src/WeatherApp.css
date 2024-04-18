@@ -1,0 +1,28 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa; /* Light gray background */
+  margin: 0;
+  padding: 0;
+}
+
+.weather-app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Changed to min-height to allow container to grow taller */
+  background-color: #f3f3f3;
+  font-family: Arial, sans-serif;
+  background-image: url("https://images.unsplash.com/photo-1536514498073-50e69d39c6cf?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-size: cover; /* Cover the entire container */
+  background-position: center; /* Center the background image */
+}
+
+@media only screen and (max-width: 768px) {
+  /* Adjust styles for screens smaller than 768px */
+  .weather-app-container {
+      padding: 20px; /* Add some padding on smaller screens */
+  }
+}
+
+/* Add more CSS rules for SearchBox and InfoBox components if needed */
