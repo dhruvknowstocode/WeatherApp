@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -12,24 +13,24 @@ import WbCloudyIcon from '@mui/icons-material/WbCloudy';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import OpacityIcon from '@mui/icons-material/Opacity';
 import HumidityAlert from './HumidityAlert';
-import { useState, useEffect } from 'react';
 
 export default function InfoBox({ info }) {
     const HOT_URL = "https://media.istockphoto.com/id/1073767838/photo/beautiful-sunset-at-mountain-view-and-long-river.webp?s=170667a&w=0&k=20&c=5JPRQ0beJsOFshii88R5jvGmAb_rSsU_YDsDAvb5mxc=";
     const COLD_URL = "https://images.unsplash.com/photo-1612208695882-02f2322b7fee?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
     const RAIN_URL = "https://images.unsplash.com/photo-1428592953211-077101b2021b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
     const [showHumidity, setShowHumidity] = useState(false);
+    const [weatherIcon, setWeatherIcon] = useState('');
 
-    const getWeatherIcon = () => {
+    useEffect(() => {
         if (info.humidity > 60) {
             setShowHumidity(true);
-            return RAIN_URL;
+            setWeatherIcon(RAIN_URL);
         } else if (info.temp > 25) {
-            return HOT_URL;
+            setWeatherIcon(HOT_URL);
         } else {
-            return COLD_URL;
+            setWeatherIcon(COLD_URL);
         }
-    };
+    }, [info]);
 
     return (
         <div className="info-box">
@@ -53,7 +54,7 @@ export default function InfoBox({ info }) {
                     <CardMedia
                         className="weather-image"
                         component="img"
-                        image={getWeatherIcon()}
+                        image={weatherIcon}
                         title="Weather Image"
                     />
                     <CardContent className="weather-details">
